@@ -18,6 +18,7 @@ const Palette = ({ palette }) => {
   const colorBoxes = palette.colors[level].map(color => (
     <ColorBox background={color[format]} name={color.name} />
   ));
+  
   return (
     <div className="Palette">
       <Navbar level={level} changeLevel={changeLevel} changeFormat={changeFormat} />

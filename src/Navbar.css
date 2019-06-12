@@ -19,7 +19,11 @@
 
 .logo a {
   text-decoration: none;
-  
+}
+
+.select-container {
+  margin-left: auto;
+  margin-right: 1rem;
 }
 
 /* Slider Styles */
@@ -45,7 +49,6 @@
   margin-left: -7px;
   margin-top: -3.3px;
 }
-
 
 
 .rc-slider-rail {
