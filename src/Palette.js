@@ -1,20 +1,8 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/styles";
 import PaletteFooter from './PaletteFooter'
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
-import "./Palette.css";
-
-const styles = makeStyles({
-  Palette: {
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column"
-  },
-  colors: {
-    height: "90%",
-  }
-})
+import styles from './styles/PaletteStyles'
 
 
 const Palette = ({ palette }) => {
