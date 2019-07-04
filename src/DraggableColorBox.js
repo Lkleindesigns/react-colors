@@ -13,12 +13,12 @@ const styles = makeStyles({
   }
 })
 
-const DraggableColorBox = ({color}) => {
+const DraggableColorBox = ({color, name}) => {
   const classes = styles()
 
   return (
     <div className={classes.root} style={{ backgroundColor: color }}>
-      {color}
+      {name}
     </div>
   )
 }
