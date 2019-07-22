@@ -166,6 +166,7 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
               Save Palette
             </Button>
           </ValidatorForm>
+          
         </Toolbar>
       </AppBar>
       <Drawer
