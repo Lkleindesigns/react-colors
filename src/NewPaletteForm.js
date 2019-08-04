@@ -95,10 +95,12 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
   );
 
   useEffect(() =>
-  ValidatorForm.addValidationRule("isPaletteNameUnique", value =>
-    palettes.every(({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase())
-  )
-);
+    ValidatorForm.addValidationRule("isPaletteNameUnique", value =>
+      palettes.every(
+        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
+      )
+    )
+  );
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -128,6 +130,10 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
     };
     savePalette(newPalette);
     history.push("/");
+  };
+
+  const removeColor = colorName => {
+    setColors(colors.filter(color => color.name !== colorName));
   };
 
   return (
@@ -166,7 +172,6 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
               Save Palette
             </Button>
           </ValidatorForm>
-          
         </Toolbar>
       </AppBar>
       <Drawer
@@ -229,7 +234,12 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
         <div className={classes.drawerHeader} />
 
         {colors.map(color => (
-          <DraggableColorBox color={color.color} name={color.name} />
+          <DraggableColorBox
+            key={color.name}
+            handleClick={() => removeColor(color.name)}
+            color={color.color}
+            name={color.name}
+          />
         ))}
       </main>
     </div>
