@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PaletteFormNav from './PaletteFormNav'
-import ColorPickerForm from './ColorPickerForm'
+import PaletteFormNav from "./PaletteFormNav";
+import ColorPickerForm from "./ColorPickerForm";
 import DraggableColorList from "./DraggableColorList";
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
@@ -18,26 +18,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
   },
-  appBar: {
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  hide: {
-    display: "none"
-  },
+
   drawer: {
     width: drawerWidth,
     flexShrink: 0
@@ -85,11 +66,11 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
     setOpen(false);
   }
 
-  const addNewColor = (newColor) => {
+  const addNewColor = newColor => {
     setColors([...colors, newColor]);
   };
 
-  const handleSubmit = (newPaletteName) => {
+  const handleSubmit = newPaletteName => {
     const newPalette = {
       paletteName: newPaletteName,
       id: newPaletteName.toLowerCase().replace(/ /g, "-"),
@@ -122,8 +103,12 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
 
   return (
     <div className={classes.root}>
-      
-      <PaletteFormNav handleDrawerOpen={handleDrawerOpen} handleSubmit={handleSubmit} classes={classes} open={open} palettes={palettes} />
+      <PaletteFormNav
+        handleDrawerOpen={handleDrawerOpen}
+        handleSubmit={handleSubmit}
+        open={open}
+        palettes={palettes}
+      />
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -156,7 +141,11 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
           </Button>
         </div>
 
-        <ColorPickerForm colors={colors} paletteIsFull={paletteIsFull} addNewColor={addNewColor} />
+        <ColorPickerForm
+          colors={colors}
+          paletteIsFull={paletteIsFull}
+          addNewColor={addNewColor}
+        />
       </Drawer>
       <main
         className={clsx(classes.content, {
