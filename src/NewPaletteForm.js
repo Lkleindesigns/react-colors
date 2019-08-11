@@ -86,12 +86,10 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
     setColors([...colors, newColor]);
   };
 
-  const handleSubmit = newPaletteName => {
-    const newPalette = {
-      paletteName: newPaletteName,
-      id: newPaletteName.toLowerCase().replace(/ /g, "-"),
-      colors
-    };
+  const handleSubmit = newPalette => {
+    newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, "-")
+    newPalette.colors = colors
+
     savePalette(newPalette);
     history.push("/");
   };
