@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
+import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { Picker } from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css'
 
-const PaletteMetaForm = ({ palettes, handleSubmit }) => {
-  const [open, setOpen] = useState(true);
+const PaletteMetaForm = ({ palettes, handleSubmit, hideForm }) => {
   const [newPaletteName, setNewPaletteName] = useState("");
 
   useEffect(() =>
@@ -19,14 +20,10 @@ const PaletteMetaForm = ({ palettes, handleSubmit }) => {
     )
   );
 
-  function handleClose() {
-    setOpen(false);
-  }
-
   return (
       <Dialog
-        open={open}
-        onClose={handleClose}
+        open={true}
+        onClose={hideForm}
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
@@ -35,6 +32,7 @@ const PaletteMetaForm = ({ palettes, handleSubmit }) => {
           <DialogContentText>
             Please enter a name for your new palette. Make sure it's unique!
           </DialogContentText>
+          <Picker />
 
             <TextValidator
               label="Palette Name"
@@ -49,7 +47,7 @@ const PaletteMetaForm = ({ palettes, handleSubmit }) => {
           
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={hideForm} color="primary">
             Cancel
           </Button>
           <Button variant="contained" color="primary" type="submit">

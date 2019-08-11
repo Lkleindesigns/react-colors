@@ -56,6 +56,10 @@ const PaletteFormNav = ({ open, palettes, handleSubmit, handleDrawerOpen }) => {
   const classes = useStyles();
   const [formShowing, setFormShowing] = React.useState(false);
 
+  function hideForm() {
+    setFormShowing(false)
+  }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -102,7 +106,7 @@ const PaletteFormNav = ({ open, palettes, handleSubmit, handleDrawerOpen }) => {
       </AppBar>
 
       {formShowing ? (
-        <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
+        <PaletteMetaForm palettes={palettes} hideForm={hideForm} handleSubmit={handleSubmit} />
       ) : null}
     </div>
   );
