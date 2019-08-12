@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { generatePalette } from "./colorHelpers";
 import Palette from "./Palette";
@@ -8,7 +8,16 @@ import NewPaletteForm from "./NewPaletteForm";
 import seedColors from "./seedColors";
 
 function App() {
-  const [palettes, setPalettes] = useState(seedColors);
+  const savedPalettes = JSON.parse(localStorage.getItem("palettes"))
+  const [palettes, setPalettes] = useState(savedPalettes || seedColors);
+
+  useEffect(() => {
+    function syncLocalStorage() {
+      localStorage.setItem("palettes", JSON.stringify(palettes))
+    }
+    
+    syncLocalStorage()
+  }, [palettes])
 
   const findPalette = id => {
     return palettes.find(function(palette) {
@@ -18,7 +27,10 @@ function App() {
 
   function savePalette(newPalette) {
     setPalettes([...palettes, newPalette]);
+
   }
+
+
 
   return (
     <Switch>
