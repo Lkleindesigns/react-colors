@@ -123,6 +123,7 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
           axis="xy"
           colors={colors}
           removeColor={removeColor}
+          distance={10}
         />
       </main>
     </div>
