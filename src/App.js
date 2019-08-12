@@ -33,8 +33,6 @@ function App() {
     setPalettes(st => (st.filter(palette => palette.id !== id)))
   }
 
-
-
   return (
     <Switch>
       <Route

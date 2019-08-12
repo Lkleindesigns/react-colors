@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/styles";
+import sizes from './sizes'
 import chroma from 'chroma-js'
 
 export default makeStyles({
@@ -12,7 +13,20 @@ export default makeStyles({
     marginBottom: "-5px",
     "&:hover button": {
       opacity: 1
-    }
+    },
+    [sizes.down("lg")]: {
+      width: "25%",
+      height: props => props.showingFullPalette ? "20%" : "50%"
+    },
+    [sizes.down("md")]: {
+      width: "50%",
+      height: props => props.showingFullPalette ? "10%" : "50%"
+    },
+    [sizes.down("xs")]: {
+      width: "100%",
+      height: props => props.showingFullPalette ? "8%" : "10%"
+    },
+
   },
   copyText: {
     color: ({background}) => chroma(background).luminance() >= 0.7 ? "black" : "white"
