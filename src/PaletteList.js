@@ -1,14 +1,13 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
-import styles from './styles/PaletteListStyles'
+import styles from "./styles/PaletteListStyles";
 
-
-const PaletteList = ({ palettes, history }) => {
+const PaletteList = ({ palettes, history, removePalette }) => {
   const classes = styles();
-  const goToPalette = (id) => {
-    history.push(`/palette/${id}`)
-  }
+  const goToPalette = id => {
+    history.push(`/palette/${id}`);
+  };
   return (
     <div className={classes.root}>
       <div className={classes.container}>
@@ -18,7 +17,13 @@ const PaletteList = ({ palettes, history }) => {
         </nav>
         <div className={classes.palettes}>
           {palettes.map(palette => (
-              <MiniPalette {...palette} handleClick={() => goToPalette(palette.id)} />
+            <MiniPalette
+              {...palette}
+              removePalette={removePalette}
+              handleClick={() => goToPalette(palette.id)}
+              key={palette.id}
+              id={palette.id}
+            />
           ))}
         </div>
       </div>

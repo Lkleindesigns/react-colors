@@ -15,7 +15,7 @@ function App() {
     function syncLocalStorage() {
       localStorage.setItem("palettes", JSON.stringify(palettes))
     }
-    
+
     syncLocalStorage()
   }, [palettes])
 
@@ -27,7 +27,10 @@ function App() {
 
   function savePalette(newPalette) {
     setPalettes([...palettes, newPalette]);
-
+  }
+  
+  function removePalette(id) {
+    setPalettes(st => (st.filter(palette => palette.id !== id)))
   }
 
 
@@ -57,7 +60,7 @@ function App() {
         exact
         path="/"
         render={routeProps => (
-          <PaletteList palettes={palettes} {...routeProps} />
+          <PaletteList palettes={palettes} removePalette={removePalette} {...routeProps} />
         )}
       />
       <Route
