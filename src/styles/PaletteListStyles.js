@@ -3,12 +3,22 @@ import bg from './bg.svg'
 import sizes from './sizes'
 
 export default makeStyles({
+  "@global": {
+    ".fade-exit": {
+      opacity: 1
+    },
+    ".fade-exit-active": {
+      opacity: 0,
+      transition: "opacity 500ms ease-out"
+    }
+  },
   root: {
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
     backgroundColor: "#f64f1e",
+    /* background by SVGBackgrounds.com */
     backgroundImage: `url(${bg})`,
     overflow: "scroll",
     backgroundSize: "cover"
