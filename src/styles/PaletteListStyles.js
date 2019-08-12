@@ -1,14 +1,20 @@
 import { makeStyles } from "@material-ui/styles";
+import bg from './bg.svg'
 import sizes from './sizes'
 
 export default makeStyles({
   root: {
-    backgroundColor: "blue",
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
-    justifyContent: "center"
-
+    justifyContent: "center",
+    backgroundColor: "#f64f1e",
+    backgroundImage: `url(${bg})`,
+    overflow: "scroll",
+    backgroundSize: "cover"
+  },
+  heading: {
+    fontSize: "2rem"
   },
   container: {
     width: "50%",
@@ -44,7 +50,7 @@ export default makeStyles({
     },
     [sizes.down('xs')]: {
       gridTemplateColumns: "repeat(1, 100%)",
-      gridGap: "1rem",
+      gridGap: "1.3rem",
     },
   }
 });
