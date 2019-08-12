@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/styles";
+import sizes from './sizes'
 
 export default makeStyles({
   root: {
@@ -15,6 +16,12 @@ export default makeStyles({
     alignItems: "flex-start",
     flexDirection: "column",
     flexWrap: "wrap",
+    [sizes.down('xl')]: {
+      width: "75%"
+    },
+    [sizes.down('xs')]: {
+      width: "66%"
+    }
   },
   nav: {
     display: "flex",
@@ -31,6 +38,13 @@ export default makeStyles({
     width: "100%",
     display: "grid",
     gridTemplateColumns: "repeat(3, 30%)",
-    gridGap: "5%"
+    gridGap: "2.5rem",
+    [sizes.down('md')]: {
+      gridTemplateColumns: "repeat(2, 50%)",
+    },
+    [sizes.down('xs')]: {
+      gridTemplateColumns: "repeat(1, 100%)",
+      gridGap: "1rem",
+    },
   }
 });
