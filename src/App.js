@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import SingleColorPalette from "./SingleColorPalette";
 import NewPaletteForm from "./NewPaletteForm";
 import PaletteList from "./PaletteList";
-import seedColors from "./seedColors";
 import Palette from "./Palette";
 import Page from './Page'
+import seedColors from "./seedColors";
 import { Route, Switch } from "react-router-dom";
 import { generatePalette } from "./colorHelpers";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -91,6 +91,17 @@ function App() {
                       palette={generatePalette(
                         findPalette(routeProps.match.params.id)
                       )}
+                    />
+                  </Page>
+                )}
+              />
+              <Route  
+                render={routeProps => (
+                  <Page>
+                    <PaletteList
+                      palettes={palettes}
+                      removePalette={removePalette}
+                      {...routeProps}
                     />
                   </Page>
                 )}

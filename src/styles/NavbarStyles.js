@@ -50,7 +50,7 @@ export default makeStyles({
       marginLeft: "-7px",
       marginTop: "-3.3px",
     },
-    [sizes.down("md")]: {
+    [sizes.down("sm")]: {
       width: "150px"
     }
   }

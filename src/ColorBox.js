@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Link } from "react-router-dom";
 import styles from "./styles/ColorBoxStyles"
+import clsx from "clsx";
 
 
 const ColorBox = ({ background, name, moreUrl, showingFullPalette }) => {
@@ -20,9 +21,9 @@ const ColorBox = ({ background, name, moreUrl, showingFullPalette }) => {
       <div style={{ background }} className={classes.ColorBox}>
         <div
           style={{ background }}
-          className={`${classes.copyOverlay} ${copied && classes.showOverlay}`}
+          className={clsx(classes.copyOverlay, {[classes.showOverlay]: copied})}
         />
-        <div className={`${classes.copyMessage} ${copied && classes.showMessage}`}>
+        <div className={clsx(classes.copyMessage, {[classes.showMessage]: copied})}>
           <h1>copied!</h1>
           <p className={classes.copyText}>{background}</p>
         </div>

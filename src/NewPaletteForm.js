@@ -9,13 +9,14 @@ import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
 import styles from './styles/NewPaletteFormStyles'
+import seedColors from './seedColors'
 import { arrayMove } from "react-sortable-hoc";
 import clsx from "clsx";
 
 const NewPaletteForm = ({ savePalette, history, palettes }) => {
   const classes = styles();
   const [open, setOpen] = useState(true);
-  const [colors, setColors] = useState(palettes[0].colors);
+  const [colors, setColors] = useState(seedColors[0].colors);
   const paletteIsFull = colors.length >= 20;
 
   function handleDrawerOpen() {
@@ -53,8 +54,14 @@ const NewPaletteForm = ({ savePalette, history, palettes }) => {
   const addRandomColor = () => {
     // pick random color from existing palettes
     const allColors = palettes.map(p => p.colors).flat();
-    let rand = Math.floor(Math.random() * allColors.length);
-    const randomColor = allColors[rand];
+    let rand;
+    let randomColor;
+    let isDuplicateColor = true;
+    while(isDuplicateColor) {
+      rand = Math.floor(Math.random() * allColors.length);
+      randomColor = allColors[rand]
+      isDuplicateColor = colors.some(color => color.name === randomColor.name)
+    }
     setColors([...colors, randomColor]);
     // add to state
   };

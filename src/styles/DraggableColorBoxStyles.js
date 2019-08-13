@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/styles'
+import chroma from 'chroma-js'
 import sizes from './sizes'
 
 export default makeStyles({
@@ -33,7 +34,7 @@ export default makeStyles({
     left: "0px",
     bottom: "0px",
     padding: "10px",
-    color: "rgba(0, 0, 0, 0.5)",
+    color: ({color}) => chroma(color).luminance() <= 0.08 ? "rgba(245,245,245, 0.8)" : "rgba(0, 0, 0, 0.5)",
     letterSpacing: "1px",
     textTransform: "uppercase",
     fontSize: "12px",
