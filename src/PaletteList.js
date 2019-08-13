@@ -20,7 +20,7 @@ const PaletteList = ({ palettes, history, removePalette }) => {
   const [deletingId, setDeletingId] = React.useState("")
   const classes = styles();
 
-  const goToPalette = id => {
+  function goToPalette(id) {
     history.push(`/palette/${id}`);
   };
 
@@ -53,7 +53,7 @@ const PaletteList = ({ palettes, history, removePalette }) => {
               <MiniPalette
                 {...palette}
                 openDeleteDialog={openDeleteDialog}
-                handleClick={() => goToPalette(palette.id)}
+                goToPalette={goToPalette}
                 key={palette.id}
                 id={palette.id}
               />
